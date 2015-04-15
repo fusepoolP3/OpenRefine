@@ -1,0 +1,66 @@
+#!/bin/bash
+REFINE_BUILD_DIR=build
+REFINE_DIST_DIR=dist
+[ -z "$VERSION" ] && VERSION="with-rdf"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+wget https://java.net/projects/appbundler/downloads/download/appbundler-1.0.jar
+brew install ant
+ant -Dappbundler.dir=`pwd` mac
+
+mkdir -p "$REFINE_BUILD_DIR/mac/.background"
+mkdir "$REFINE_DIST_DIR"
+cp graphics/dmg_background/dmg_background.png "$REFINE_BUILD_DIR/mac/.background/dmg_background.png"
+
+SIZE=300
+
+if [ -f "$REFINE_BUILD_DIR/temp_refine.dmg" ] ; then
+   rm "$REFINE_BUILD_DIR/temp_refine.dmg"
+fi
+
+# Sign the bundle with a self-signed cert so OS X doesn't frustrate users by making app invisible
+#    codesign -s "OpenRefine Code Signing" "$REFINE_BUILD_DIR/mac/OpenRefine.app"
+#    spctl --assess --type execute --verbose=4 "$REFINE_BUILD_DIR/mac/OpenRefine.app"
+
+TITLE="OpenRefine"
+echo "Building MacOSX DMG for $TITLE"
+hdiutil create -srcfolder "$REFINE_BUILD_DIR/mac" -volname "$TITLE" -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW -size ${SIZE}m "$REFINE_BUILD_DIR/temp_refine.dmg" || error "can't create empty DMG"
+DEVICE=`hdiutil attach -readwrite -noverify -noautoopen "$REFINE_BUILD_DIR/temp_refine.dmg" | egrep '^/dev/' | sed -e "s/^\/dev\///g" -e 1q  | awk '{print $1}'`
+echo $DEVICE
+hdiutil attach "$REFINE_BUILD_DIR/temp_refine.dmg" || error "Can't attach temp DMG"
+
+    echo '
+       tell application "Finder"
+         tell disk "'$TITLE'"
+            open
+            set current view of container window to icon view
+            set toolbar visible of container window to false
+            set statusbar visible of container window to false
+            set the bounds of container window to {200, 100, 760, 460}
+            set theViewOptions to the icon view options of container window
+            set arrangement of theViewOptions to not arranged
+            set icon size of theViewOptions to 100
+            set background picture of theViewOptions to file ".background:dmg_background.png"
+            make new alias file at container window to POSIX file "/Applications" with properties {name:"Applications"}
+            set position of item "OpenRefine" of container window to {170, 175}
+            set position of item "Applications" of container window to {380, 175}
+            close
+            open
+            update without registering applications
+            delay 5
+            eject
+         end tell
+       end tell
+    ' | osascript || error "Error running applescript"
+
+sync
+sync
+sleep 5
+#   hdiutil detach $DEVICE
+
+if [ -f "$REFINE_DIST_DIR/openrefine-mac-$VERSION.dmg" ] ; then
+   rm "$REFINE_DIST_DIR/openrefine-mac-$VERSION.dmg"
+fi
+
+hdiutil convert "$REFINE_BUILD_DIR/temp_refine.dmg" -format UDZO -imagekey zlib-level=9 -o "$REFINE_DIST_DIR/openrefine-mac-$VERSION.dmg" || error "Error compressing DMG"
+hdiutil internet-enable -yes "$REFINE_DIST_DIR/openrefine-mac-$VERSION.dmg" || error "Error internet-enabling DMG"
