@@ -8,8 +8,10 @@ deploy:
   provider: releases
   api_key:
     secure: pjfce7ykCtzSk1daZTdh8mqg3lBW5QdivTv4/PS6PP7kry+O0sXLBg+TgWBdZhAvGK33ZcaxU0SyOH2dIFZXPbFo6270JBWdHriRYcDW2OyyL/mN7TQUEhIiCQKFYxmm4Nj5OilkoX9oBQHt9L6nBQUz2KzSHvG5gOXztHib+z4=
+  skip_cleanup: true
   file:
   - dist/openrefine-mac-with-rdf.dmg
   - dist/openrefine-linux-with-rdf.tar.gz
   on:
     repo: fusepoolP3/OpenRefine
+    tags: true
