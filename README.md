@@ -1,6 +1,6 @@
 #OpenRefine with RDF-extension
 
-This repository is a fork of the original [OpenRefine](https://github.com/OpenRefine/OpenRefine) repository. The goal is to provide a binary distribution of OpenRefine with (rdf-extension)[https://github.com/fadmaa/grefine-rdf-extension].
+This repository is a fork of the original [OpenRefine](https://github.com/OpenRefine/OpenRefine) repository. The goal is to provide a binary distribution of OpenRefine with [rdf-extension](https://github.com/fadmaa/grefine-rdf-extension).
 
 ### How to get it?
 
