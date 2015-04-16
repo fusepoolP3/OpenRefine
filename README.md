@@ -1,3 +1,11 @@
+#OpenRefine with RDF-extension
+
+This repository is a fork of the original [OpenRefine](https://github.com/OpenRefine/OpenRefine) repository. The goal is to provide a binary distribution of OpenRefine with (rdf-extension)[https://github.com/fadmaa/grefine-rdf-extension].
+
+### How to get it?
+
+Go to the [releases](https://github.com/fusepoolP3/OpenRefine/releases/latest) page and download the distribution for your operating system.
+
 #OpenRefine
 
 [![Build Status](https://travis-ci.org/OpenRefine/OpenRefine.png?branch=master)](https://travis-ci.org/OpenRefine/OpenRefine) [![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=32795)](https://www.bountysource.com/trackers/32795-open-refine?utm_source=32795&utm_medium=shield&utm_campaign=TRACKER_BADGE)
@@ -6,7 +14,6 @@ OpenRefine is a power tool that allows you to load data, understand it,
 clean it up, reconcile it to master database, and augment it with data coming from
 Freebase or other web sources. All with the comfort and privacy of 
 your own computer.
-
 
 ###Where can I get more information?
 
