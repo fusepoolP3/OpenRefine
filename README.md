@@ -1,4 +1,4 @@
-#OpenRefine with RDF-extension
+#OpenRefine with RDF-extension [![Build Status](https://travis-ci.org/fusepoolP3/OpenRefine.svg?branch=master)](https://travis-ci.org/fusepoolP3/OpenRefine)
 
 This repository is a fork of the original [OpenRefine](https://github.com/OpenRefine/OpenRefine) repository. The goal is to provide a binary distribution of OpenRefine with [rdf-extension](https://github.com/fadmaa/grefine-rdf-extension).
 
