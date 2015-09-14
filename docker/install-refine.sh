@@ -20,8 +20,6 @@ wget --no-check-certificate https://github.com/fusepoolP3/OpenRefine/releases/do
 
 mv openrefine-with-rdf/* /openrefine; rm -rf openrefine-with-rdf
 
-cd /openrefine; ant clean build
-
 # OpenRefine start script, adjusts the JVM memory according to the machines available memory
 
 echo "#!/bin/bash
