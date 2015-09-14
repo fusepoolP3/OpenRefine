@@ -1,6 +1,6 @@
 language: objective-c
 install:
-- git clone https://github.com/fadmaa/grefine-rdf-extension.git extensions/rdf-extension
+- git clone https://github.com/fusepoolP3/p3-grefine-rdf-extension.git extensions/p3-grefine-rdf-extension
 script:
 - ./dist_mac
 - ant -Dversion=with-rdf linux
