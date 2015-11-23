@@ -2,10 +2,10 @@
 
 <!--+
     |
-    |  OpenRefine Extensions Build File    
-    |                
+    |  OpenRefine Extensions Build File
+    |
     +-->
-    
+
 <project name="openrefine-extensions" default="build" basedir=".">
   <target name="build">
     <echo message="Building extensions" />
@@ -15,6 +15,7 @@
     <ant dir="gdata/" target="build" />
     <ant dir="pc-axis/" target="build" />
     <ant dir="p3-grefine-rdf-extension/" target="build" />
+    <ant dir="p3-openrefine-extension/" target="build" />
   </target>
 
   <target name="clean">
@@ -25,5 +26,6 @@
     <ant dir="gdata/" target="clean" />
     <ant dir="pc-axis/" target="clean" />
     <ant dir="p3-grefine-rdf-extension/" target="clean" />
+    <ant dir="p3-openrefine-extension/" target="clean" />
   </target>
 </project>
