@@ -25,8 +25,10 @@ fi
 TITLE="openrefine"
 echo "Building MacOSX DMG for $TITLE"
 hdiutil create -srcfolder "$REFINE_BUILD_DIR/mac" -volname "$TITLE" -fs HFS+ -fsargs "-c c=64,a=16,e=16" -format UDRW -size ${SIZE}m "$REFINE_BUILD_DIR/temp_refine.dmg" || error "can't create empty DMG"
+sleep 5
 DEVICE=`hdiutil attach -readwrite -noverify -noautoopen "$REFINE_BUILD_DIR/temp_refine.dmg" | egrep '^/dev/' | sed -e "s/^\/dev\///g" -e 1q  | awk '{print $1}'`
 echo $DEVICE
+sleep 5
 hdiutil attach "$REFINE_BUILD_DIR/temp_refine.dmg" || error "Can't attach temp DMG"
 
     echo '
