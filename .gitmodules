@@ -1,6 +1,6 @@
 [submodule "p3-grefine-rdf-extension"]
     path = extensions/p3-grefine-rdf-extension
-        url = git://github.com/fusepoolP3/p3-grefine-rdf-extension.git
+    url = git://github.com/fusepoolP3/p3-grefine-rdf-extension.git
 [submodule "p3-openrefine-extension"]
     path = extensions/p3-openrefine-extension
     url = git://github.com/fusepoolP3/p3-openrefine-extension.git
