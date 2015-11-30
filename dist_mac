@@ -51,7 +51,7 @@ hdiutil attach "$REFINE_BUILD_DIR/temp_refine.dmg" || error "Can't attach temp D
             eject
          end tell
        end tell
-    ' | osascript || error "Error running applescript"
+    ' | osascript
 
 sync
 sync
