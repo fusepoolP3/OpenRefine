@@ -15,7 +15,7 @@ DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes -qq install ant && rm -Rf 
 mkdir /openrefine
 
 # Download OpenRefine from gitub repository and compile
-wget --no-check-certificate https://github.com/fusepoolP3/OpenRefine/releases/download/2.6-p3-beta/openrefine-linux-with-rdf.tar.gz && \
+wget --no-check-certificate https://github.com/fusepoolP3/OpenRefine/releases/download/2.6-p3/openrefine-linux-with-rdf.tar.gz && \
     tar xzvf openrefine-linux-with-rdf.tar.gz; rm openrefine-linux-with-rdf.tar.gz
 
 mv openrefine-with-rdf/* /openrefine; rm -rf openrefine-with-rdf
