@@ -1,4 +1,4 @@
-language: objective-c
+language: java
 script:
 - ant -Dversion=with-rdf linux
 deploy:
