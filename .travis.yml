@@ -1,6 +1,5 @@
 language: objective-c
 script:
-- ./dist_mac
 - ant -Dversion=with-rdf linux
 deploy:
   provider: releases
